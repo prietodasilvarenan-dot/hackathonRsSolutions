@@ -1,0 +1,29 @@
+TELAS
+                                    PESO    FEITO     ROTAS     RESPOSTAS   BACK-END    FRONT-END
+tela 1- viagem ou local               1       -         T           F           F           F
+tela 2- ia ou sem ia                  1       -         T           F           F           F
+
+    AI
+    tela 1- preferencias              3       -         T           F           F           F
+    tela 2- evitar                    3       -         T           F           F           F
+    tela 3- resultado da consulta     3       -         T           F           F           F
+
+    SEM IA
+    TELA 1- CARDAPIO + CATEGORIA      2       -         F           F           F           F
+
+
+TELA 3- CARRINHO + CONFIRMAÇÃO        2       -         T           F           F           F
+
+INFORMAÇÕES
+pesos
+1 - ultimos
+2 - depois 
+3 - O QUANTO ANTES
+
+feitos 
+- inicialmente
+/ pela metade
+o FEITO
+
+T = TRUE
+F = FALSE
