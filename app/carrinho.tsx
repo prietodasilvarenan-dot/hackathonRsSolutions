@@ -1,32 +1,54 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { router } from 'expo-router';
-import { Button, Text, View } from 'react-native';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { styles } from '../constants/styles';
+
 
 export const unstable_settings = {
   anchor: '(tabs)',
 };
 
-export default function RootLayout() {
+export default function Carrinho() {
   const colorScheme = useColorScheme();
+  const { tipo } = useLocalSearchParams()
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <View>
-        <Text>Seu carrinho</Text>
-        <Text>1 ----  ---       2 ----  ---</Text>
-        <Text>3 ----  ---       4 ----  ---</Text>
-        <Text>5 ----  ---       6 ----  ---</Text>
-        <Text>7 ----  ---       8 ----  ---</Text>
-        <Text>9 ----  ---       10 ---  ---</Text>
-        <Text>11 ---  ---       12 ---  ---</Text>
+    <>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View style={styles.container }>
+        <Text style={styles.titulo}>Seu Carrinho</Text>
+        <View style={styles.horizontal}>
 
-        <Text>Valor total: R$XXX,XX</Text>
-        <Button title="Comprar" onPress={() => router.push('/')}></Button>
-        <Button title="Cancelar" onPress={() => router.push('/')} />
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => 
+              router.back()
+            }
+            >
+            <Text style={styles.textoBotao}>Voltar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => 
+              router.push({
+                pathname: '/'
+              })
+            }
+            >
+            <Text style={styles.textoBotao}>Comprar</Text>
+          </TouchableOpacity>
+
+        </View>
       </View>
-    </ThemeProvider>
+    </>
+    //<View>  
+    //  <Text>Seu carrinho</Text>
+    //  <Text>Valor total: R$XXX,XX</Text>
+    //  <Button title="Comprar" onPress={() => router.push('/')}></Button>
+    //  <Button title="Cancelar" onPress={() => router.push('/')} />
+    //</View>
   );
 }

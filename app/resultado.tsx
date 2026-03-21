@@ -1,30 +1,55 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { router } from 'expo-router';
-import { Button, Text, View } from 'react-native';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { styles } from '../constants/styles';
 
 export const unstable_settings = {
   anchor: '(tabs)',
 };
 
-export default function RootLayout() {
+export default function Resultado() {
   const colorScheme = useColorScheme();
-
+  const { tipo } = useLocalSearchParams()
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <View>
-        <Text>Aqui estão seus pratos de acordo com seus gostos!</Text>
-        <Text>1 ----  ---       2 ----  ---</Text>
-        <Text>3 ----  ---       4 ----  ---</Text>
-        <Text>5 ----  ---       6 ----  ---</Text>
-        <Text>7 ----  ---       8 ----  ---</Text>
-        <Text>9 ----  ---       10 ---  ---</Text>
-        <Text>11 ---  ---       12 ---  ---</Text>
-        <Button title="Ir ao Carrinho" onPress={() => router.push('/carrinho')} />
-        <Button title="Refazer" onPress={() => router.push('/preferencias')} />
+    
+    <>
+    {/* COMENTARIOS */}
+      <Stack.Screen options={{ headerShown: false }} />
+    
+      <View style={styles.container }>
+
+        <Text style={styles.titulo}>Resultado da Filtragem</Text>
+        
+        <View style={styles.horizontal}>
+
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => 
+              router.push({
+                pathname: '/evitar',
+                params: { tipo }
+              })
+            }
+            >
+            <Text style={styles.textoBotao}>Voltar</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => 
+              router.push({
+                pathname: '/carrinho',
+                params: { tipo }
+              })
+            }
+            >
+            <Text style={styles.textoBotao}>Ir ao Carrinho</Text>
+          </TouchableOpacity>
+
+        </View>
       </View>
-    </ThemeProvider>
+    </>
   );
 }

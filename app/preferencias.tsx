@@ -1,29 +1,58 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { router } from 'expo-router';
-import { Button, Text, View } from 'react-native';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { styles } from '../constants/styles';
+
 
 export const unstable_settings = {
   anchor: '(tabs)',
 };
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+export default function Preferencias() {
 
+  const colorScheme = useColorScheme();
+  const { tipo } = useLocalSearchParams();
+  
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <View>
-        <Text>O que você gostaria de ter em seu prato?</Text>
-        <Text>1 ----  ---       2 ----  ---</Text>
-        <Text>3 ----  ---       4 ----  ---</Text>
-        <Text>5 ----  ---       6 ----  ---</Text>
-        <Text>7 ----  ---       8 ----  ---</Text>
-        <Text>9 ----  ---       10 ---  ---</Text>
-        <Text>11 ---  ---       12 ---  ---</Text>
-        <Button title="Proximo" onPress={() => router.push('/evitar')}></Button>
+    <>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View style={styles.container}>
+            
+            <Text style={styles.titulo}>
+              O que você gostaria de ter em seu prato?
+            </Text>
+      
+
+            <View style={styles.horizontal}> 
+
+              <TouchableOpacity
+                style={styles.botao}
+                onPress={() => 
+                  router.push({
+                    pathname: '/consulta',
+                    params: { tipo }
+                  })
+                }
+                >
+                <Text style={styles.textoBotao}>Voltar</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.botao}
+                onPress={() => 
+                  router.push({
+                    pathname: '/evitar',
+                    params: { tipo }
+                  })
+                }
+                >
+                <Text style={styles.textoBotao}>Próximo</Text>
+              </TouchableOpacity>
+            </View>
+      
       </View>
-    </ThemeProvider>
+    </>
   );
 }
