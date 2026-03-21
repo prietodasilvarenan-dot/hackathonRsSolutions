@@ -9,12 +9,12 @@ tela 2- ia ou sem ia                  1      90%        T           T           
     tela 3- resultado da consulta     3      50%        T           F           F           F
 
     SEM IA
-    TELA 1- CARDAPIO + CATEGORIA      2      60%       T/F           F           F           F
+    TELA 1- CARDAPIO + CATEGORIA      2      60%       T/F          T           F           F
 
 
 TELA 3- CARRINHO + CONFIRMAÇÃO        2      30%        T           F           F           F
 
-47% FEITO
+54% FEITO
 
 INFORMAÇÕES
 pesos
@@ -30,7 +30,7 @@ F = FALSE
 O QUE AINDA DEVE SER FEITO 
 - checkbox das preferencias e das nao preferencias em preferencias.tsx e em evitar.tsx
 - retorno dos cards no resultado.tsx
-- filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
+1- filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
 - carrinho de compra "funcional"
 
 - COMENTAR OS ARQUIVOS

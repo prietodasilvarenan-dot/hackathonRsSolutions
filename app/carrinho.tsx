@@ -34,7 +34,7 @@ export default function Carrinho() {
             style={styles.botao}
             onPress={() => 
               router.push({
-                pathname: '/'
+                pathname: '/modal'
               })
             }
             >

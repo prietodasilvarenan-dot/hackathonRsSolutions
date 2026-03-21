@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
 
   horizontal: {
     flexDirection: 'row',
-    gap: 20,
   },
 
   titulo: {
