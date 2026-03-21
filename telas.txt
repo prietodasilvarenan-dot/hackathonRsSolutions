@@ -4,17 +4,26 @@ tela 1- viagem ou local               1      90%        T           T           
 tela 2- ia ou sem ia                  1      90%        T           T           T           F
 
     AI
-    tela 1- preferencias              3      30%        T           F           F           F
-    tela 2- evitar                    3      30%        T           F           F           F
+    tela 1- preferencias              3      60%        T           F           F           F
+        checkbox das preferencias
+        front end
+    tela 2- evitar                    3      60%        T           F           F           F
+        checkbox das NAO preferencias
+        front end
     tela 3- resultado da consulta     3      50%        T           F           F           F
+        implementação da IA
+        retorno dos cards
+        front end
 
     SEM IA
-    TELA 1- CARDAPIO + CATEGORIA      2      60%       T/F          T           F           F
-
+    TELA 1- CARDAPIO + CATEGORIA      2      70%       T/F          T           F           F
+        botoes de + e - funcionais 
+        botoes de categorias
+        front end
 
 TELA 3- CARRINHO + CONFIRMAÇÃO        2      30%        T           F           F           F
 
-54% FEITO
+64% feito
 
 INFORMAÇÕES
 pesos
@@ -30,7 +39,7 @@ F = FALSE
 O QUE AINDA DEVE SER FEITO 
 - checkbox das preferencias e das nao preferencias em preferencias.tsx e em evitar.tsx
 - retorno dos cards no resultado.tsx
-1- filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
+- filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
 - carrinho de compra "funcional"
 
 - COMENTAR OS ARQUIVOS

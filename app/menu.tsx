@@ -51,7 +51,7 @@ export default function Menu() {
               })
             }
           >
-            <Text style={styles.textoBotao}>Ir ao Carrinho</Text>
+            <Text style={styles.textoBotao}>Carrinho</Text>
           </TouchableOpacity>
 
         </View>
