@@ -5,12 +5,9 @@ tela 2- ia ou sem ia                  1      90%        T           T           
 
     AI
     tela 1- preferencias              3      60%        T           F           F           F
-        checkbox das preferencias
+        checkbox das preferencias e nao preferencias
         front end
-    tela 2- evitar                    3      60%        T           F           F           F
-        checkbox das NAO preferencias
-        front end
-    tela 3- resultado da consulta     3      50%        T           F           F           F
+    tela 2- resultado da consulta     3      50%        T           F           F           F
         implementação da IA
         retorno dos cards
         front end
@@ -23,7 +20,7 @@ tela 2- ia ou sem ia                  1      90%        T           T           
 
 TELA 3- CARRINHO + CONFIRMAÇÃO        2      30%        T           F           F           F
 
-64% feito
+65% feito
 
 INFORMAÇÕES
 pesos

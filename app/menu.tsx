@@ -1,61 +1,82 @@
-import 'react-native-reanimated';
-
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { styles } from '../constants/styles';
-import BebidasList from './cardapios/bebidas';
-import { BurguersList } from './cardapios/burguers';
-import SobremesasList from './cardapios/sobremesas';
-export const unstable_settings = {
-    anchor: '(tabs)',
-};
+import { ItemCard } from "@/components/ItemCard";
+import { styles } from "@/constants/styles";
+import { router, useLocalSearchParams } from "expo-router";
+import React from "react";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { bebidas } from "../components/ItemCard/cardapio/bebidas";
+import { burguers } from "../components/ItemCard/cardapio/burguers";
+import { sobremesas } from "../components/ItemCard/cardapio/sobremesas";
 
 export default function Menu() {
-  const colorScheme = useColorScheme();
-  const { tipo } = useLocalSearchParams()
+    const { tipo } = useLocalSearchParams();
 
-  return (
-    <>
-      <Stack.Screen options={{ headerShown: false }} />
-      <View style={styles.container }>
-        <Text style={styles.titulo}>Cardapio</Text>
+    return (
+        <View style={{ flex: 1 }}>
 
-        <ScrollView style={{ marginTop: 20 }}>
-          <BurguersList />
-          <BebidasList />
-          <SobremesasList />
-        </ScrollView>
+            {/* SCROLL */}
 
-        <View style={styles.horizontal}>
-      
-          <TouchableOpacity
-            style={styles.botao}
-            onPress={() => 
-              router.push({
-                pathname: '/consulta',
-                params: { tipo }
-              })
-            }
-          >
-            <Text style={styles.textoBotao}>Voltar</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity
-            style={styles.botao}
-            onPress={() => 
-              router.push({
-                pathname: '/carrinho',
-                params: { tipo }
-              })
-            }
-          >
-            <Text style={styles.textoBotao}>Carrinho</Text>
-          </TouchableOpacity>
+            <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+                
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                  Burgers
+              </Text>
+
+              {burguers.map(item => (
+                  <ItemCard key={item.id} {...item} />
+              ))}
+
+              <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
+                  Bebidas
+              </Text>
+
+              {bebidas.map(item => (
+                  <ItemCard key={item.id} {...item} />
+              ))}
+
+              <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
+                  Sobremesas
+              </Text>
+
+              {sobremesas.map(item => (
+                  <ItemCard key={item.id} {...item} />
+              ))}
+
+            </ScrollView>
+
+            {/* BOTÕES */}
+            <View style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                flexDirection: "row",
+                gap: 10,
+                padding: 10,
+                backgroundColor: "#fff",
+                borderTopWidth: 1
+            }}>
+                
+                <TouchableOpacity
+                    style={[styles.botao, { flex: 1 }]}
+                    onPress={() => router.push('/consulta')}
+                >
+                    <Text style={styles.textoBotao}>Voltar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.botaoSecundario, { flex: 1 }]}
+                    onPress={() => 
+                      router.push({
+                        pathname: '/preferencias',
+                        params: { tipo }
+                      })
+                    }
+                >
+                    <Text style={styles.textoBotao}>Carrinho</Text>
+                </TouchableOpacity>
+
+            </View>
 
         </View>
-      </View>
-    </>
-  );
+    );
 }

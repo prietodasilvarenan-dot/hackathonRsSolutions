@@ -1,10 +1,9 @@
-import React from "react";
-
 enum TiposItens {
     BURGUER,
     SOBREMESA,
     BEBIDA
 }
+
 export const sobremesas = [
     {
         id: 11,
@@ -87,11 +86,3 @@ export const sobremesas = [
         qtd: 0
     }
 ];
-
-export default function SobremesasList() {
-    return (
-        <>
-        
-        </>
-    );
-}

@@ -1,5 +1,3 @@
-import React from "react";
-
 enum TiposItens {
     BURGUER,
     SOBREMESA,
@@ -88,11 +86,3 @@ export const burguers = [
         qtd: 0
     }
 ];
-
-export function BurguersList() {
-    return (
-        <>
-        
-        </>
-    );
-}

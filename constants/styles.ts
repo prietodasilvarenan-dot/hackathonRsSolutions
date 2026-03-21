@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
   botao: {
     flex: 1,
     backgroundColor: '#334155',
+    
     paddingVertical: 15,
     paddingHorizontal: 70,
     borderRadius: 12,
