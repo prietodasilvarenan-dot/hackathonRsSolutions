@@ -67,7 +67,7 @@ export default function Menu() {
                     style={[styles.botaoSecundario, { flex: 1 }]}
                     onPress={() => 
                       router.push({
-                        pathname: '/preferencias',
+                        pathname: '/carrinho',
                         params: { tipo }
                       })
                     }
