@@ -1,16 +1,13 @@
 import { Stack, router, useLocalSearchParams } from 'expo-router';
-import React, { useState } from "react"; // Adicione o useState
+import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
-// 1. Importe o componente e os estilos que criamos
 import { PrefCard } from '@/components/Card/pref';
 import { styles } from '../constants/styles';
 
 export default function Preferencias() {
   const { tipo } = useLocalSearchParams();
 
-  // 2. Estado para armazenar as escolhas de todos os cards
-  // O formato será: { "Carne": "quero", "Ovo": "evito" }
   const [escolhas, setEscolhas] = useState<Record<string, 'quero' | 'evito' | null>>({});
 
   const preferencias = [
@@ -46,7 +43,6 @@ export default function Preferencias() {
     "Tradicional"
   ];
 
-  // Função para atualizar o estado quando um card for clicado
   const handleEscolha = (item: string, valor: 'quero' | 'evito' | null) => {
     setEscolhas(prev => ({
       ...prev,
@@ -55,7 +51,6 @@ export default function Preferencias() {
   };
 
   const handleProximo = () => {
-    // 3. Envia os dados para a próxima tela como uma String JSON
     router.push({
       pathname: '/resultado',
       params: {
@@ -75,31 +70,37 @@ export default function Preferencias() {
         </Text>
 
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 100 }} // Espaço para não cobrir o último item
+          contentContainerStyle={{ paddingBottom: 100 }} 
           showsVerticalScrollIndicator={false}
         >
           {preferencias.map((pref) => (
             <PrefCard
               key={pref}
               title={pref}
-              // Passa a função que atualiza o estado da tela pai
               onSelect={(valor) => handleEscolha(pref, valor)}
             />
           ))}
         </ScrollView>
 
-        {/* Rodapé com Botões */}
         <View style={footerStyle.container}>
           <TouchableOpacity
             style={[styles.botao, { flex: 1, backgroundColor: '#ccc' }]}
-            onPress={() => router.push('/consulta')}
+            onPress={() => router.push({
+              pathname: '/consulta',
+              params: { tipo }
+            })}
           >
             <Text style={styles.textoBotao}>Voltar</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.botao, { flex: 1 }]}
-            onPress={() => router.push('/resultado')}
+            onPress={() => 
+              router.push({
+                pathname: '/resultado',
+                params: { tipo }
+              })
+            }
           >
             <Text style={styles.textoBotao}>Próximo</Text>
           </TouchableOpacity>
@@ -109,7 +110,6 @@ export default function Preferencias() {
   );
 }
 
-// Estilo rápido para o rodapé fixo
 const footerStyle = {
   container: {
     position: "absolute" as const,

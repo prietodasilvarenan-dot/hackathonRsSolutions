@@ -48,7 +48,11 @@ export default function Menu() {
 
           <TouchableOpacity
             style={[styles.botao, { flex: 1 }]}
-            onPress={() => router.push('/consulta')}
+            onPress={() => 
+              router.push({
+                pathname: '/consulta',
+                params: { tipo }
+              })}
           >
             <Text style={styles.textoBotao}>Voltar</Text>
           </TouchableOpacity>

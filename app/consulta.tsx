@@ -17,39 +17,37 @@ export default function Consulta() {
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <View style={styles.container}>
 
-          <Text style={styles.titulo}>
-            Gostaria de usar uma IA para filtrar seus pratos?
-          </Text>
+        <Text style={styles.titulo}>
+          Gostaria de usar uma IA para filtrar seus pratos?
+        </Text>
 
-          <View style={styles.horizontal}>
+        <View style={styles.horizontal}>
 
-            <TouchableOpacity
-              style={styles.botao}
-              onPress={() =>
-                router.push({
-                  pathname: '/preferencias',
-                  params: { tipo }
-                })
-              }
-            >
-              <Text style={styles.textoBotao}>Usar IA!</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() =>
+              router.push({
+                pathname: '/preferencias',
+                params: { tipo }
+              })
+            }
+          >
+            <Text style={styles.textoBotao}>Usar IA!</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.botaoSecundario}
-              onPress={() =>
-                router.push({
-                  pathname: '/menu',
-                  params: { tipo }
-                })
-              }
-            >
-              <Text style={styles.textoBotao}>Pedir normalmente</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.botaoSecundario}
+            onPress={() =>
+              router.push({
+                pathname: '/menu',
+                params: { tipo }
+              })
+            }
+          >
+            <Text style={styles.textoBotao}>Pedir normalmente</Text>
+          </TouchableOpacity>
 
-          </View>
 
         </View>
 
