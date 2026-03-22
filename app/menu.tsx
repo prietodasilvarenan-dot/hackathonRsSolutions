@@ -1,4 +1,4 @@
-import { ItemCard } from "@/components/Card";
+import { ItemCard } from "@/components/Card/";
 import { styles } from "@/constants/styles";
 import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
@@ -44,17 +44,7 @@ export default function Menu() {
             </ScrollView>
 
             {/* BOTÕES */}
-            <View style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                flexDirection: "row",
-                gap: 10,
-                padding: 10,
-                backgroundColor: "#fff",
-                borderTopWidth: 1
-            }}>
+            <View style={styles.navbar}>
                 
                 <TouchableOpacity
                     style={[styles.botao, { flex: 1 }]}

@@ -92,4 +92,16 @@ export const styles = StyleSheet.create({
     // Sombra para Android
     elevation: 3,
   },
+
+  navbar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    gap: 10,
+    padding: 10,
+    backgroundColor: "#fff",
+    borderTopWidth: 1
+  }
 });

@@ -2,7 +2,7 @@ TELAS
                                     PESO    FEITO     ROTAS     RESPOSTAS   BACK-END    FRONT-END
 tela 1- viagem ou local               1      90%        T           T           T           F
 tela 2- ia ou sem ia                  1      90%        T           T           T           F
-
+-180
     AI
     tela 1- preferencias              3      80%        T           F          T/F           F
         empurrar os valores para IA filtrar
@@ -11,15 +11,18 @@ tela 2- ia ou sem ia                  1      90%        T           T           
         implementação da IA
         retorno dos cards
         front end
-
+-130
     SEM IA
-    TELA 1- CARDAPIO + CATEGORIA      2      75%       T/F          T           F           F
+    TELA 1- CARDAPIO + CATEGORIA      2      80%        T           T           F           F
         botoes de categorias
         front end
-
+-80
 TELA 3- CARRINHO + CONFIRMAÇÃO        2      30%        T           F           F           F
+-30
 
-65% feito
+( 180 + 130 + 80 + 30 ) / 6 =  
+    420 / 6 = 
+     70% feito
 
 INFORMAÇÕES
 pesos
@@ -34,7 +37,7 @@ F = FALSE
 
 O QUE AINDA DEVE SER FEITO 
 - retorno dos cards no resultado.tsx
-- filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
+- filtro navegador de botoes para 2os pratos, bebidas, sobremesas no menu.tsx
 - carrinho de compra "funcional"
 
 - COMENTAR OS ARQUIVOS

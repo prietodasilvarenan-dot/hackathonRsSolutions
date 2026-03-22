@@ -1,9 +1,8 @@
-enum TiposItens {
-    BURGUER,
-    SOBREMESA,
-    BEBIDA
+export enum TiposItens {
+    BURGUER = "Burguer",
+    SOBREMESA = "Sobremesa",
+    BEBIDA = "Bebida"
 }
-
 export const burguers = [
     {
         id: 1,
