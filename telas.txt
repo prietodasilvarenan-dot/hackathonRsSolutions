@@ -4,8 +4,8 @@ tela 1- viagem ou local               1      90%        T           T           
 tela 2- ia ou sem ia                  1      90%        T           T           T           F
 
     AI
-    tela 1- preferencias              3      60%        T           F           F           F
-        checkbox das preferencias e nao preferencias
+    tela 1- preferencias              3      80%        T           F          T/F           F
+        empurrar os valores para IA filtrar
         front end
     tela 2- resultado da consulta     3      50%        T           F           F           F
         implementação da IA
@@ -13,8 +13,7 @@ tela 2- ia ou sem ia                  1      90%        T           T           
         front end
 
     SEM IA
-    TELA 1- CARDAPIO + CATEGORIA      2      70%       T/F          T           F           F
-        botoes de + e - funcionais 
+    TELA 1- CARDAPIO + CATEGORIA      2      75%       T/F          T           F           F
         botoes de categorias
         front end
 
@@ -34,7 +33,6 @@ F = FALSE
 
 
 O QUE AINDA DEVE SER FEITO 
-- checkbox das preferencias e das nao preferencias em preferencias.tsx e em evitar.tsx
 - retorno dos cards no resultado.tsx
 - filtro navegador de botoes para os pratos, bebidas, sobremesas no menu.tsx
 - carrinho de compra "funcional"

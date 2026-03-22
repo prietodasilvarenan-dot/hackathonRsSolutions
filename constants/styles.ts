@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
   botao: {
     flex: 1,
     backgroundColor: '#334155',
-    
     paddingVertical: 15,
     paddingHorizontal: 70,
     borderRadius: 12,
@@ -74,5 +73,23 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.3,
     shadowRadius: 10,
+  },
+
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 16,
+    marginVertical: 8,
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // Sombra para iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    // Sombra para Android
+    elevation: 3,
   },
 });

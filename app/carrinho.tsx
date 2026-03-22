@@ -44,11 +44,5 @@ export default function Carrinho() {
         </View>
       </View>
     </>
-    //<View>  
-    //  <Text>Seu carrinho</Text>
-    //  <Text>Valor total: R$XXX,XX</Text>
-    //  <Button title="Comprar" onPress={() => router.push('/')}></Button>
-    //  <Button title="Cancelar" onPress={() => router.push('/')} />
-    //</View>
   );
 }

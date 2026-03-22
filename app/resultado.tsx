@@ -28,7 +28,7 @@ export default function Resultado() {
             style={styles.botao}
             onPress={() => 
               router.push({
-                pathname: '/evitar',
+                pathname: '/preferencias',
                 params: { tipo }
               })
             }

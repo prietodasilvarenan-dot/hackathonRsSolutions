@@ -1,11 +1,11 @@
-import { ItemCard } from "@/components/ItemCard";
+import { ItemCard } from "@/components/Card";
 import { styles } from "@/constants/styles";
 import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { bebidas } from "../components/ItemCard/cardapio/bebidas";
-import { burguers } from "../components/ItemCard/cardapio/burguers";
-import { sobremesas } from "../components/ItemCard/cardapio/sobremesas";
+import { bebidas } from "../components/Card/cardapio/bebidas";
+import { burguers } from "../components/Card/cardapio/burguers";
+import { sobremesas } from "../components/Card/cardapio/sobremesas";
 
 export default function Menu() {
     const { tipo } = useLocalSearchParams();
