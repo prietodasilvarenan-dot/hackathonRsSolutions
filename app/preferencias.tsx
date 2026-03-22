@@ -8,7 +8,7 @@ import { styles } from '../constants/styles';
 
 export default function Preferencias() {
   const { tipo } = useLocalSearchParams();
-  
+
   // 2. Estado para armazenar as escolhas de todos os cards
   // O formato será: { "Carne": "quero", "Ovo": "evito" }
   const [escolhas, setEscolhas] = useState<Record<string, 'quero' | 'evito' | null>>({});
@@ -43,7 +43,7 @@ export default function Preferencias() {
     "Drink",
     "Artesanal",
     "Duplo",
-    "Tradicional" 
+    "Tradicional"
   ];
 
   // Função para atualizar o estado quando um card for clicado
@@ -58,9 +58,9 @@ export default function Preferencias() {
     // 3. Envia os dados para a próxima tela como uma String JSON
     router.push({
       pathname: '/resultado',
-      params: { 
-        tipo, 
-        selecionados: JSON.stringify(escolhas) 
+      params: {
+        tipo,
+        selecionados: JSON.stringify(escolhas)
       }
     });
   };
@@ -69,27 +69,27 @@ export default function Preferencias() {
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-            
+
         <Text style={styles.titulo}>
           O que você gostaria de ter em seu prato?
         </Text>
 
-        <ScrollView 
+        <ScrollView
           contentContainerStyle={{ paddingBottom: 100 }} // Espaço para não cobrir o último item
           showsVerticalScrollIndicator={false}
         >
           {preferencias.map((pref) => (
-            <PrefCard 
-              key={pref} 
-              title={pref} 
+            <PrefCard
+              key={pref}
+              title={pref}
               // Passa a função que atualiza o estado da tela pai
-              onSelect={(valor) => handleEscolha(pref, valor)} 
+              onSelect={(valor) => handleEscolha(pref, valor)}
             />
           ))}
         </ScrollView>
 
         {/* Rodapé com Botões */}
-        <View style={footerStyle.container}> 
+        <View style={footerStyle.container}>
           <TouchableOpacity
             style={[styles.botao, { flex: 1, backgroundColor: '#ccc' }]}
             onPress={() => router.push('/consulta')}

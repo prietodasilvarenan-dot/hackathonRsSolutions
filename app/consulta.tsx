@@ -18,22 +18,22 @@ export default function Consulta() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <View style={styles.container}>
-          
+
           <Text style={styles.titulo}>
             Gostaria de usar uma IA para filtrar seus pratos?
           </Text>
 
           <View style={styles.horizontal}>
-            
+
             <TouchableOpacity
               style={styles.botao}
-              onPress={() => 
+              onPress={() =>
                 router.push({
                   pathname: '/preferencias',
                   params: { tipo }
                 })
               }
-              >
+            >
               <Text style={styles.textoBotao}>Usar IA!</Text>
             </TouchableOpacity>
 
@@ -42,7 +42,7 @@ export default function Consulta() {
               onPress={() =>
                 router.push({
                   pathname: '/menu',
-                  params: { tipo } 
+                  params: { tipo }
                 })
               }
             >
@@ -50,9 +50,9 @@ export default function Consulta() {
             </TouchableOpacity>
 
           </View>
-          
+
         </View>
-        
+
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity

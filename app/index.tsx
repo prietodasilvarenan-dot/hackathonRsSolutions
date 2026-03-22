@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        
+
         <Text style={styles.titulo}>Seja bem vindo ao nosso Estabelecimento!</Text>
         <Text style={styles.subtitulo}>
           Deseja consumir em viagem ou no local?

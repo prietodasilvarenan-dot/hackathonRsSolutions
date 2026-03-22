@@ -13,38 +13,38 @@ export default function Resultado() {
   const colorScheme = useColorScheme();
   const { tipo } = useLocalSearchParams()
   return (
-    
+
     <>
-    {/* COMENTARIOS */}
+      {/* COMENTARIOS */}
       <Stack.Screen options={{ headerShown: false }} />
-    
-      <View style={styles.container }>
+
+      <View style={styles.container}>
 
         <Text style={styles.titulo}>Resultado da Filtragem</Text>
-        
+
         <View style={styles.horizontal}>
 
           <TouchableOpacity
             style={styles.botao}
-            onPress={() => 
+            onPress={() =>
               router.push({
                 pathname: '/preferencias',
                 params: { tipo }
               })
             }
-            >
+          >
             <Text style={styles.textoBotao}>Voltar</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={styles.botao}
-            onPress={() => 
+            onPress={() =>
               router.push({
                 pathname: '/carrinho',
                 params: { tipo }
               })
             }
-            >
+          >
             <Text style={styles.textoBotao}>Ir ao Carrinho</Text>
           </TouchableOpacity>
 

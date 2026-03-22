@@ -103,5 +103,14 @@ export const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#fff",
     borderTopWidth: 1
-  }
+  },
+
+  titleCard: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 20,
+    textAlign: "center"
+  },
+
+
 });
