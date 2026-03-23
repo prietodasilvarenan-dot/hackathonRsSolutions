@@ -2,7 +2,7 @@ import { ItemCard } from "@/components/Card";
 import { Stack, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { enviarParaIA } from "../api/api";
+//import { enviarParaIA } from "../api/api";
 import { styles } from '../constants/styles';
 
 // Importando as 3 listas de cardápio
@@ -15,36 +15,36 @@ export default function Resultado() {
   const [recomendados, setRecomendados] = useState<any[]>([]);
   const [carregando, setCarregando] = useState(true);
 
-  useEffect(() => {
-    const filtrarTudo = async () => {
-      try {
-        const escolhas = JSON.parse((selecionados as string) || "{}");
-        const quero = Object.keys(escolhas).filter(k => escolhas[k] === 'quero');
-        const evito = Object.keys(escolhas).filter(k => escolhas[k] === 'evito');
+  // useEffect(() => {
+  //   const filtrarTudo = async () => {
+  //     try {
+  //       const escolhas = JSON.parse((selecionados as string) || "{}");
+  //       const quero = Object.keys(escolhas).filter(k => escolhas[k] === 'quero');
+  //       const evito = Object.keys(escolhas).filter(k => escolhas[k] === 'evito');
         
-        const promptTexto = `Quero: ${quero.join(", ")}. Evito: ${evito.join(", ")}.`;
+  //       const promptTexto = `Quero: ${quero.join(", ")}. Evito: ${evito.join(", ")}.`;
 
-        // Junta tudo em uma única lista para a IA processar de uma vez
-        const superLista = [...burguers, ...bebidas, ...sobremesas];
+  //       // Junta tudo em uma única lista para a IA processar de uma vez
+  //       const superLista = [...burguers, ...bebidas, ...sobremesas];
 
-        const data = await enviarParaIA(promptTexto, superLista);
+  //       const data = await enviarParaIA(promptTexto, superLista);
         
-        if (data?.recomendados) {
-          const filtrados = data.recomendados.map((rec: any) => {
-            const itemOriginal = superLista.find(i => i.id === rec.id);
-            return itemOriginal ? { ...itemOriginal } : null;
-          }).filter((i: any) => i !== null);
+  //       if (data?.recomendados) {
+  //         const filtrados = data.recomendados.map((rec: any) => {
+  //           const itemOriginal = superLista.find(i => i.id === rec.id);
+  //           return itemOriginal ? { ...itemOriginal } : null;
+  //         }).filter((i: any) => i !== null);
           
-          setRecomendados(filtrados);
-        }
-      } catch (err) {
-        console.error("Erro na filtragem:", err);
-      } finally {
-        setCarregando(false);
-      }
-    };
-    filtrarTudo();
-  }, [selecionados]);
+  //         setRecomendados(filtrados);
+  //       }
+  //     } catch (err) {
+  //       console.error("Erro na filtragem:", err);
+  //     } finally {
+  //       setCarregando(false);
+  //     }
+  //   };
+  //   filtrarTudo();
+  // }, [selecionados]);
 
   const renderCategoria = (titulo: string, tipoFiltro: string) => {
     const itens = recomendados.filter(item => item.tipo === tipoFiltro);
