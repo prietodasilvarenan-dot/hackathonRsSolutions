@@ -1,58 +1,115 @@
-import { ItemCard } from "@/components/Card/";
+import { ItemCard, ItemCardProps } from "@/components/Card/";
 import { styles } from "@/constants/styles";
-import { router, useLocalSearchParams } from "expo-router";
-import React from "react";
+import { Stack, router, useLocalSearchParams } from "expo-router";
+import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { bebidas } from "../components/Card/cardapio/bebidas";
 import { burguers } from "../components/Card/cardapio/burguers";
 import { sobremesas } from "../components/Card/cardapio/sobremesas";
 
+// 🔥 tipo do carrinho
+type ItemCarrinho = {
+  id: number;
+  nome: string;
+  valor: number;
+  desc: string;
+  tipo: any;
+  qtd: number;
+};
+
 export default function Menu() {
   const { tipo } = useLocalSearchParams();
 
+  const [carrinho, setCarrinho] = useState<ItemCarrinho[]>([]);
+
+  // 🔥 FUNÇÃO CORRIGIDA
+  const atualizarCarrinho = (item: ItemCardProps, qtd: number) => {
+    setCarrinho(prev => {
+      const existe = prev.find(i => i.id === item.id);
+
+      if (qtd === 0) {
+        return prev.filter(i => i.id !== item.id);
+      }
+
+      if (existe) {
+        return prev.map(i =>
+          i.id === item.id ? { ...i, qtd } : i
+        );
+      }
+
+      return [...prev, { ...item, qtd }];
+    });
+  };
+
   return (
     <>
+      <Stack.Screen options={{ headerShown: false }} />
+
       <View style={{ flex: 1 }}>
 
-        {/* SCROLL */}
-
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-          <Text style={styles.titleCard}>
-            Burgers
-          </Text>
 
-          {burguers.map(item => (
-            <ItemCard key={item.id} {...item} />
-          ))}
+          {/* BURGERS */}
+          <Text style={styles.titleCard}>Burgers</Text>
 
-          <Text style={styles.titleCard}>
-            Bebidas
-          </Text>
+          {burguers.map(item => {
+            const itemCarrinho = carrinho.find(i => i.id === item.id);
 
-          {bebidas.map(item => (
-            <ItemCard key={item.id} {...item} />
-          ))}
+            return (
+              <ItemCard
+                key={item.id}
+                {...item}
+                qtd={itemCarrinho?.qtd || 0} // 🔥 ESSENCIAL
+                onChangeQtd={(qtd) => atualizarCarrinho(item, qtd)}
+              />
+            );
+          })}
 
-          <Text style={styles.titleCard}>
-            Sobremesas
-          </Text>
+          {/* BEBIDAS */}
+          <Text style={styles.titleCard}>Bebidas</Text>
 
-          {sobremesas.map(item => (
-            <ItemCard key={item.id} {...item} />
-          ))}
+          {bebidas.map(item => {
+            const itemCarrinho = carrinho.find(i => i.id === item.id);
+
+            return (
+              <ItemCard
+                key={item.id}
+                {...item}
+                qtd={itemCarrinho?.qtd || 0}
+                onChangeQtd={(qtd) => atualizarCarrinho(item, qtd)}
+              />
+            );
+          })}
+
+          {/* SOBREMESAS */}
+          <Text style={styles.titleCard}>Sobremesas</Text>
+
+          {sobremesas.map(item => {
+            const itemCarrinho = carrinho.find(i => i.id === item.id);
+
+            return (
+              <ItemCard
+                key={item.id}
+                {...item}
+                qtd={itemCarrinho?.qtd || 0}
+                onChangeQtd={(qtd) => atualizarCarrinho(item, qtd)}
+              />
+            );
+          })}
 
         </ScrollView>
 
-        {/* BOTÕES */}
+        {/* NAVBAR */}
         <View style={styles.navbar}>
 
           <TouchableOpacity
             style={[styles.botao, { flex: 1 }]}
-            onPress={() => 
+            onPress={() =>
               router.push({
                 pathname: '/consulta',
                 params: { tipo }
-              })}
+              })
+            }
           >
             <Text style={styles.textoBotao}>Voltar</Text>
           </TouchableOpacity>
@@ -62,7 +119,10 @@ export default function Menu() {
             onPress={() =>
               router.push({
                 pathname: '/carrinho',
-                params: { tipo }
+                params: {
+                  tipo,
+                  carrinho: JSON.stringify(carrinho)
+                }
               })
             }
           >
