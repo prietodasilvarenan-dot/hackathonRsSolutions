@@ -1,21 +1,29 @@
 enum TiposItens {
-    BURGUER, SOBREMESA, BEBIDA
+    BURGUER = "Burguer",
+    SOBREMESA = "Sobremesa",
+    BEBIDA = "Bebida"
 }
 
 export class Item {
-    id: number;
-    nome: string;
-    valor: number;
-    desc: string;
-    tipo: TiposItens;
-    qtd: number;
+    constructor(
+        public id: number,
+        public nome: string,
+        public precoUnitario: number,
+        public desc: string,
+        public tipo: TiposItens,
+        public qtd: number
+    ) {}
 
-    constructor(id: number, nome: string, valor: number, desc: string, tipo: TiposItens, qtd: number) {
-        this.id = id
-        this.nome = nome
-        this.valor = valor
-        this.desc = desc
-        this.tipo = tipo
-        this.qtd = qtd
+    get valorTotal(): number {
+        return this.precoUnitario * this.qtd;
     }
 }
+
+const novoItem = new Item(
+    1, 
+    "X-Burger Especial", 
+    35.0, 
+    "Pão brioche, blend 180g e queijo prato", 
+    TiposItens.BURGUER, 
+    2
+);

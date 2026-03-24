@@ -1,34 +1,41 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#c5c5c5', // fundo
-    justifyContent: 'center',
+    backgroundColor: '#ececec',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 20,
   },
 
-  horizontal: {
+  container: {
+    flexGrow: 1,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 350,
+    gap: 20,
   },
 
   titulo: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#242424',
+    color: '#050505',
     marginBottom: 10,
+    textAlign: 'center',
   },
 
   subtitulo: {
     fontSize: 16,
-    color: '#424242',
+    color: '#6a6a6b',
     marginBottom: 30,
+    textAlign: 'center',
   },
 
   botao: {
-    flex: 1,
-    backgroundColor: '#334155',
+    flex: 0.9,
+    backgroundColor: '#d85600',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 12,
@@ -36,12 +43,19 @@ export const styles = StyleSheet.create({
   },
 
   botaoSecundario: {
-    flex: 1,
-    backgroundColor: '#334155',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 12,
-    alignItems: 'center',
+    flex: 0.9,                 
+    flexDirection: 'row',      
+    alignItems: 'center',      
+    justifyContent: 'center', 
+    backgroundColor: '#c23700',
+    padding: 30,       
+    borderRadius: 20, 
+    height: 150,        
+    elevation: 5,             
+    shadowColor: '#000',      
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
   },
 
   textoBotao: {
@@ -50,11 +64,9 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
 
-
-  //MODAL
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.6)', // fundo escuro transparente
+    backgroundColor: 'rgba(0,0,0,0.6)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -65,14 +77,11 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 25,
     alignItems: 'center',
-
-    // sombra Android
     elevation: 10,
-
-    // sombra iOS
     shadowColor: '#000',
     shadowOpacity: 0.3,
     shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
   },
 
   card: {
@@ -84,12 +93,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // Sombra para iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    // Sombra para Android
     elevation: 3,
   },
 
@@ -102,15 +109,14 @@ export const styles = StyleSheet.create({
     gap: 10,
     padding: 10,
     backgroundColor: "#fff",
-    borderTopWidth: 1
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
   },
 
   titleCard: {
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
-
-
 });
