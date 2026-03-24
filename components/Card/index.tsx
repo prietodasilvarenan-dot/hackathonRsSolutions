@@ -1,4 +1,7 @@
+// Hook de estado
 import React, { useState } from "react";
+
+// Componentes RN
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 // Enum para categorizar os itens
@@ -8,7 +11,7 @@ export enum TiposItens {
     BEBIDA = "Bebida"
 }
 
-// Tipo base
+// Tipo base do item
 export type Item = {
     id: number;
     nome: string;
@@ -18,43 +21,60 @@ export type Item = {
     qtd: number;
 };
 
-// Props
+// Props do componente (herda Item + função opcional)
 export interface ItemCardProps extends Item {
     onChangeQtd?: (qtd: number) => void;
 }
 
+// Componente do card
 export const ItemCard = (props: ItemCardProps) => {
+
+    // Estado para evitar múltiplos cliques rápidos
     const [clicando, setClicando] = useState(false);
 
-    // 🔥 agora vem do props
+    // Quantidade vem do pai (Menu/Carrinho)
     const qtd = props.qtd;
 
+    // Diminuir quantidade
     const menos = () => {
+
+        // Evita spam de clique
         if (clicando) return;
+
         setClicando(true);
 
+        // Só diminui se maior que 0
         if (qtd > 0) {
             props.onChangeQtd?.(qtd - 1);
         }
 
+        // Libera clique depois de 100ms
         setTimeout(() => setClicando(false), 100);
     };
 
+    // Aumentar quantidade
     const mais = () => {
+
         if (clicando) return;
+
         setClicando(true);
 
+        // Aumenta quantidade
         props.onChangeQtd?.(qtd + 1);
 
         setTimeout(() => setClicando(false), 100);
     };
 
+    // Calcula total do item
     const total = props.valor * qtd;
 
     return (
         <View style={styles.card}>
+
+            {/* Cabeçalho */}
             <View style={styles.header}>
                 <Text style={styles.nome}>{props.nome}</Text>
+
                 <View>
                     <Text style={styles.valor}>
                         Valor: R${props.valor.toFixed(2).replace(".", ",")}
@@ -62,29 +82,36 @@ export const ItemCard = (props: ItemCardProps) => {
                 </View>
             </View>
 
+            {/* Descrição */}
             <Text style={styles.descricao}>{props.desc}</Text>
 
+            {/* Total */}
             <Text style={styles.valor}>
                 {qtd > 0 
                     ? `Total: R$ ${total.toFixed(2).replace(".", ",")}` 
                     : "Nenhum item"}
             </Text>
 
+            {/* Controles */}
             <View style={styles.controles}>
+
+                {/* Diminuir */}
                 <TouchableOpacity style={styles.botao} onPress={menos}>
                     <Text style={styles.textoBotao}>-1</Text>
                 </TouchableOpacity>
 
+                {/* Quantidade */}
                 <Text style={styles.contador}>{qtd}</Text>
 
+                {/* Aumentar */}
                 <TouchableOpacity style={styles.botao} onPress={mais}>
                     <Text style={styles.textoBotao}>+1</Text>
                 </TouchableOpacity>
+
             </View>
         </View>
     );
 };
-
 
 const styles = StyleSheet.create({
   card: {
