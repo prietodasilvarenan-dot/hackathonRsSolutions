@@ -16,16 +16,16 @@ export default function Consulta() {
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
-      <View style={styles.container}>
+      <View style={styles.main}>
 
         <Text style={styles.titulo}>
           Gostaria de usar uma IA para filtrar seus pratos?
         </Text>
 
-        <View style={styles.horizontal}>
+        <View style={styles.container}>
 
           <TouchableOpacity
-            style={styles.botao}
+            style={styles.botaoSecundario}
             onPress={() =>
               router.push({
                 pathname: '/preferencias',

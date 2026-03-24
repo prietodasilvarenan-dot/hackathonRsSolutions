@@ -36,10 +36,10 @@ export default function Preferencias() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.main}>
       <Stack.Screen options={{ headerShown: false }} />
       
-      <View style={styles.container}>
+      <View style={styles.main}>
         <Text style={styles.titulo}>
           O que você gostaria de ter em seu prato?
         </Text>
@@ -57,9 +57,11 @@ export default function Preferencias() {
           ))}
         </ScrollView>
 
-        <View style={footerStyle.container}>
+       
+      </View>
+       <View style={styles.navbar}>
           <TouchableOpacity
-            style={[styles.botao, { flex: 1, backgroundColor: '#ccc' }]}
+            style={[styles.botao, { flex: 1 }]}
             onPress={() => router.push({
               pathname: '/consulta',
               params: { tipo }
@@ -75,7 +77,6 @@ export default function Preferencias() {
             <Text style={styles.textoBotao}>Próximo</Text>
           </TouchableOpacity>
         </View>
-      </View>
     </View>
   );
 }

@@ -22,7 +22,6 @@ export default function Menu() {
 
   const [carrinho, setCarrinho] = useState<ItemCarrinho[]>([]);
 
-  // 🔥 FUNÇÃO CORRIGIDA
   const atualizarCarrinho = (item: ItemCardProps, qtd: number) => {
     setCarrinho(prev => {
       const existe = prev.find(i => i.id === item.id);
@@ -115,7 +114,7 @@ export default function Menu() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.botaoSecundario, { flex: 1 }]}
+            style={[styles.botao, { flex: 1 }]}
             onPress={() =>
               router.push({
                 pathname: '/carrinho',

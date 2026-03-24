@@ -1,14 +1,11 @@
 import { ItemCard } from "@/components/Card";
 import { Stack, router, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 //import { enviarParaIA } from "../api/api";
 import { styles } from '../constants/styles';
 
 // Importando as 3 listas de cardápio
-import { bebidas } from "../components/Card/cardapio/bebidas";
-import { burguers } from "../components/Card/cardapio/burguers";
-import { sobremesas } from "../components/Card/cardapio/sobremesas";
 
 export default function Resultado() {
   const { selecionados, tipo } = useLocalSearchParams();

@@ -86,7 +86,7 @@ export default function Carrinho() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.botaoSecundario, { flex: 1 }]}
+            style={[styles.botao, { flex: 1 }]}
             onPress={() =>
               router.push({
                 pathname: '/modal'

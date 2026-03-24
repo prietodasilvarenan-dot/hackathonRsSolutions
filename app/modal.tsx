@@ -1,9 +1,11 @@
-import { Link } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../constants/styles';
 
 export default function ModalScreen() {
   return (
+    <>
+    <Stack.Screen options={{ headerShown: false }} />
     <View style={styles.overlay}>
 
       <View style={styles.modal}>
@@ -22,5 +24,6 @@ export default function ModalScreen() {
       </View>
 
     </View>
+    </>
   );
 }
