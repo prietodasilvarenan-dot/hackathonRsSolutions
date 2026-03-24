@@ -16,14 +16,12 @@ export default function Carrinho() {
 
   const { tipo, carrinho } = useLocalSearchParams();
 
-  // 🔥 AGORA TEM ESTADO LOCAL
   const [itens, setItens] = useState<any[]>(
     carrinho
       ? JSON.parse(carrinho as string).filter((i: any) => i.qtd > 0)
       : []
   );
 
-  // 🔥 ATUALIZA ITEM NO CARRINHO
   const atualizarItem = (id: number, qtd: number) => {
     setItens(prev => {
       if (qtd === 0) {
@@ -36,7 +34,6 @@ export default function Carrinho() {
     });
   };
 
-  // 🔥 TOTAL DINÂMICO
   const totalGeral = itens.reduce((acc: number, item: any) => {
     return acc + item.valor * item.qtd;
   }, 0);
@@ -61,13 +58,11 @@ export default function Carrinho() {
                 key={item.id}
                 {...item}
 
-                // 🔥 AGORA FUNCIONA DE VERDADE
                 onChangeQtd={(qtd) => atualizarItem(item.id, qtd)}
               />
             ))
           )}
 
-          {/* 🔥 TOTAL ATUALIZA AUTOMATICAMENTE */}
           {itens.length > 0 && (
             <Text style={[styles.titleCard, { marginTop: 10 }]}>
               Total: R$ {totalGeral.toFixed(2).replace(".", ",")}

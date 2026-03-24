@@ -80,18 +80,3 @@ export default function Preferencias() {
     </View>
   );
 }
-
-const footerStyle = {
-  container: {
-    position: "absolute" as const,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flexDirection: "row" as const,
-    gap: 10,
-    padding: 20,
-    backgroundColor: "#fff",
-    borderTopWidth: 1,
-    borderColor: '#eee'
-  }
-};

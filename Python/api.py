@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
-import google.generativeai as genai # Mantendo a lib que você já tem
+import google.generativeai as genai 
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
@@ -18,11 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# CONFIGURAÇÃO: Removendo o 'transport' e deixando a lib decidir a melhor rota
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# TESTE: Tente SEM o prefixo 'models/' se com ele deu 404
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 class ItemCardapio(BaseModel):
     id: int  
@@ -36,7 +34,6 @@ class DadosRecomendacao(BaseModel):
 
 @app.post("/recomendar")
 async def recomendar(dados: DadosRecomendacao):
-    # Formata o cardápio de um jeito que a IA não ignore o final
     cardapio_formatado = ""
     for item in dados.cardapio:
         cardapio_formatado += f"PRODUTO ID {item.id}: {item.nome}. DESCRIÇÃO: {item.desc}\n"
@@ -65,8 +62,5 @@ async def recomendar(dados: DadosRecomendacao):
         
     except Exception as e:
         print(f"ERRO NA IA: {e}")
-        # FALLBACK: Retorna IDs de 1 a 15 (ajuste conforme seus IDs) 
-        # para garantir que venha lanche, bebida e sobremesa na sua tela.
-        # No hackathon, é melhor o usuário filtrar o que não quer do que ver nada.
         ids_seguros = [item.id for item in dados.cardapio]
         return {"recomendados": [{"id": i} for i in ids_seguros]}

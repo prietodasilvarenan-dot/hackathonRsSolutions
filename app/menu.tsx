@@ -7,7 +7,6 @@ import { bebidas } from "../components/Card/cardapio/bebidas";
 import { burguers } from "../components/Card/cardapio/burguers";
 import { sobremesas } from "../components/Card/cardapio/sobremesas";
 
-// 🔥 tipo do carrinho
 type ItemCarrinho = {
   id: number;
   nome: string;
@@ -48,7 +47,6 @@ export default function Menu() {
 
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
 
-          {/* BURGERS */}
           <Text style={styles.titleCard}>Burgers</Text>
 
           {burguers.map(item => {
@@ -64,7 +62,6 @@ export default function Menu() {
             );
           })}
 
-          {/* BEBIDAS */}
           <Text style={styles.titleCard}>Bebidas</Text>
 
           {bebidas.map(item => {
@@ -80,7 +77,6 @@ export default function Menu() {
             );
           })}
 
-          {/* SOBREMESAS */}
           <Text style={styles.titleCard}>Sobremesas</Text>
 
           {sobremesas.map(item => {
@@ -98,7 +94,6 @@ export default function Menu() {
 
         </ScrollView>
 
-        {/* NAVBAR */}
         <View style={styles.navbar}>
 
           <TouchableOpacity
