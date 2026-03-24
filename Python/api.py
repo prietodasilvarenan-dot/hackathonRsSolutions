@@ -18,16 +18,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#PEGANDO A CHAVE DA API
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
+#DEFININDO A IA QUE SERÁ USADA
 model = genai.GenerativeModel("gemini-2.5-flash")
 
+#CLASSE DOS ITENS
 class ItemCardapio(BaseModel):
     id: int  
     nome: str
     valor: float 
     desc: str   
 
+#CLASSE DOS DADOS
 class DadosRecomendacao(BaseModel):
     texto: str
     cardapio: List[ItemCardapio]
@@ -38,6 +42,7 @@ async def recomendar(dados: DadosRecomendacao):
     for item in dados.cardapio:
         cardapio_formatado += f"PRODUTO ID {item.id}: {item.nome}. DESCRIÇÃO: {item.desc}\n"
 
+#PROMPT
     prompt = f"""
     Você é um garçom digital. Analise estes itens:
     {cardapio_formatado}
@@ -54,7 +59,6 @@ async def recomendar(dados: DadosRecomendacao):
         response = model.generate_content(prompt)
         res_text = response.text.strip()
         
-        # Limpeza de segurança
         res_clean = res_text.replace("```json", "").replace("```", "").strip()
         
         print(f"IA RESPONDEU: {res_clean}")

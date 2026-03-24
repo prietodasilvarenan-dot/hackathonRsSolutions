@@ -1,29 +1,24 @@
+// Enum para definir os tipos de item
 enum TiposItens {
     BURGUER = "Burguer",
     SOBREMESA = "Sobremesa",
     BEBIDA = "Bebida"
 }
 
+// Classe que representa um item do cardápio/carrinho
 export class Item {
+
     constructor(
-        public id: number,
-        public nome: string,
-        public precoUnitario: number,
-        public desc: string,
-        public tipo: TiposItens,
-        public qtd: number
+        public id: number,             // ID único
+        public nome: string,           // Nome do item
+        public precoUnitario: number,  // Preço de uma unidade
+        public desc: string,           // Descrição
+        public tipo: TiposItens,       // Categoria
+        public qtd: number             // Quantidade no carrinho
     ) {}
 
+    // Getter: calcula o valor total automaticamente
     get valorTotal(): number {
         return this.precoUnitario * this.qtd;
     }
 }
-
-const novoItem = new Item(
-    1, 
-    "X-Burger Especial", 
-    35.0, 
-    "Pão brioche, blend 180g e queijo prato", 
-    TiposItens.BURGUER, 
-    2
-);
